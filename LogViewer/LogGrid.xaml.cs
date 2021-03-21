@@ -27,15 +27,22 @@
 
         public void CarregarArquivo(string arquivo)
         {
-            using (var fs = File.Open(arquivo, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            using (var bs = new BufferedStream(fs))
-            using (var sr = new StreamReader(bs, Encoding.Default))
+            try
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                using (var fs = File.Open(arquivo, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var bs = new BufferedStream(fs))
+                using (var sr = new StreamReader(bs, Encoding.Default))
                 {
-                    AdicionarLinha(line);
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        AdicionarLinha(line);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Falha ao carregar o arquivo {arquivo}.\n{ex}");
             }
 
             StatusArquivo.Content = arquivo;

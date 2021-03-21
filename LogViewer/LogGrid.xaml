@@ -21,7 +21,8 @@
                 <dxg:TableView AllowEditing="False" AllowGrouping="False" AutoWidth="True" AllowColumnMoving="False"
                                NavigationStyle="Row" AllowSorting="False" ShowGroupPanel="False"
                                SearchPanelFindFilter="Contains" ShowTargetInfoInDragDropHint="True" AllowDrop="True"
-                               AllowConditionalFormattingMenu="True" BestFitMaxRowCount="2" Margin="0,0,0,0">
+                               AllowConditionalFormattingMenu="True" BestFitMaxRowCount="2" Margin="0,0,0,0"
+                               ShowSearchPanelMode="Always" SearchPanelHorizontalAlignment="Stretch" ShowSearchPanelResultInfo="True">
                     <dxg:TableView.FormatConditions>
                         <dxg:FormatCondition Expression="[Level] = 'FATAL'">
                             <dxg:Format Background="Red" Foreground="White" FontStyle="Oblique" FontWeight="Bold"/>
