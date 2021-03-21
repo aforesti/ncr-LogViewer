@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="LogViewer.LogGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LogViewer"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxc="clr-namespace:DevExpress.Xpf.Grid.ConditionalFormatting;assembly=DevExpress.Xpf.Grid.v20.2.Core"
+             mc:Ignorable="d" d:DesignWidth="625" d:DesignHeight="385">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl x:Name="GridControl"
+                         Grid.Row="0" SelectionMode="Row"
+                         ClipboardCopyMode="ExcludeHeader"
+                         MouseDoubleClick="GridControl_OnMouseDoubleClick">
+            <dxg:GridControl.View>
+                <dxg:TableView AllowEditing="False" AllowGrouping="False" AutoWidth="True" AllowColumnMoving="False"
+                               NavigationStyle="Row" AllowSorting="False" ShowGroupPanel="False"
+                               SearchPanelFindFilter="Contains" ShowTargetInfoInDragDropHint="True" AllowDrop="True"
+                               AllowConditionalFormattingMenu="True" BestFitMaxRowCount="2" Margin="0,0,0,0">
+                    <dxg:TableView.FormatConditions>
+                        <dxg:FormatCondition Expression="[Level] = 'FATAL'">
+                            <dxg:Format Background="Red" Foreground="White" FontStyle="Oblique" FontWeight="Bold"/>
+                        </dxg:FormatCondition>
+                        <dxg:FormatCondition Expression="[Level] = 'ERROR'">
+                            <dxc:Format Foreground="Red" FontWeight="Bold" />
+                        </dxg:FormatCondition>
+                        <dxg:FormatCondition Expression="[Level] = 'WARN'">
+                            <dxc:Format Background="Yellow" FontWeight="Bold"/>
+                        </dxg:FormatCondition>
+                        <dxg:FormatCondition Expression="[Level] = 'DEBUG'">
+                            <dxc:Format Foreground="Gray"/>
+                        </dxg:FormatCondition>
+                    </dxg:TableView.FormatConditions>
+                </dxg:TableView>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="DateTime" FixedWidth="True" Width="150">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:DateEditSettings Mask="yyyy-MM-dd HH:mm:ss.ffff" MaskUseAsDisplayFormat="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Logger" FixedWidth="True" Width="150"/>
+            <dxg:GridColumn FieldName="Level" FixedWidth="True" Width="70" />
+            <dxg:GridColumn FieldName="ThreadId" FixedWidth="True" Width="60" />
+            <dxg:GridColumn FieldName="Info" MaxWidth="250">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings TextTrimming="WordEllipsis" TextWrapping="Wrap"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </dxg:GridControl>
+        <StatusBar Grid.Row="1" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <StatusBarItem x:Name="StatusArquivo" />
+            <StatusBarItem x:Name="StatusLinhas" HorizontalAlignment="Right" />
+        </StatusBar>
+    </Grid>
+</UserControl>

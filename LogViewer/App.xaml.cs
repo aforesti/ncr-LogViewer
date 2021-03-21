@@ -2,7 +2,6 @@
 {
     using System;
     using System.Windows;
-    using System.IO;
 
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,0 +1,22 @@
+﻿<Window x:Class="LogViewer.Detalhes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LogViewer"
+        mc:Ignorable="d"
+        Title="Detalhes" Height="450" Width="800" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="Info" Grid.ColumnSpan="2" TextWrapping="Wrap" IsReadOnly="True"></TextBox>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5" Click="Button_Copy_Click">Copiar</Button>
+        <Button Grid.Row="1" Grid.Column="1" Margin="5" Click="Button_Close_Click">Fechar</Button>
+    </Grid>
+</Window>
