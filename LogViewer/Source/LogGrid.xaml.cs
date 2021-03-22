@@ -5,9 +5,7 @@
     using System.Linq;
     using System.IO;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Input;
 
     /// <summary>
     /// Interaction logic for LogGrid.xaml
@@ -17,12 +15,6 @@
         public LogGrid()
         {
             InitializeComponent();
-        }
-
-        private void GridControl_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var detalhes = new Detalhes(Window.GetWindow(this), GridControl.GetFocusedRowCellValue("Info").ToString());
-            detalhes.ShowDialog();
         }
 
         public void CarregarArquivo(string arquivo)
@@ -51,7 +43,7 @@
         }
 
         private List<LogRow> Rows { get; } = new List<LogRow>();
-        public char[] Separadores { get; set; } = { '|' };
+        private char[] Separadores { get; set; } = { '|' };
 
         private void AdicionarLinha(string line)
         {
@@ -80,5 +72,10 @@
             Rows.Add(logRow);
         }
 
+        private void TableView_RowDoubleClick(object sender, DevExpress.Xpf.Grid.RowDoubleClickEventArgs e)
+        {
+            var detalhes = new Detalhes(Window.GetWindow(this), GridControl.GetFocusedRowCellValue("Info").ToString());
+            detalhes.ShowDialog();
+        }
     }
 }

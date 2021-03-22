@@ -15,7 +15,6 @@
         <Menu Grid.Row="0"  Height="Auto" Width="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="0,0,0,0"  >
             <MenuItem Header="Arquivo">
                 <MenuItem x:Name="mnuFileOpen" Header="_Abrir..." Click="MnuFileOpen_Click" />
-                <MenuItem x:Name="mnuToolsConfiguration" Header="_Configurar..." Click="MnuToolsConfiguration_Click"/>
                 <Separator/>
                 <MenuItem x:Name="mnuFileExit" Header="_Sair" Click="MnuFileExit_Click"/>
             </MenuItem>
